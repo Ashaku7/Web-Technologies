@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Helpline - Home</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80') center/cover fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        h1 {    
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+        h4 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .boxes {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .box:hover {
+            transform: translateY(-5px);
+        }
+
+        .box h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .box a {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .box a:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    
+    <div class="content">
+        <h1>🚗 Road Helpline Services</h1>
+        
+        <div class="boxes">
+            <div class="box">
+                <h2>Interactive Road Safety Map
+                <h4>EX-1</h4>
+                </h2>
+                <a href="ex1.html">View Map</a>
+            </div>
+            
+            <div class="box">
+                <h2>Roadside Assistance Hub</h2>
+                <h4>EX-2</h4>
+                <a href="ex2.html">Get Help</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

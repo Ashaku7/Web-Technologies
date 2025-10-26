@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Road Helpline - Service Request</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #2196f3, #64b5f6);
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #fff;
+            margin-top: 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+        p {
+            color: #e3f2fd;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        form {
+            background: #fff;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: left;
+        }
+        input[type=text],
+        input[type=password],
+        input[type=number],
+        input[type=time],
+        input[type=date],
+        input[type=file],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #2196f3;
+            box-shadow: 0 0 5px rgba(33, 150, 243, 0.4);
+            outline: none;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 3px;
+        }
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+        input[type=submit] {
+            width: 100%;
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+        input[type=submit]:hover {
+            background: linear-gradient(135deg, #42a5f5, #1565c0);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        .checkbox-label input {
+            margin-right: 8px;
+        }
+        @media (max-width: 600px) {
+            form {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚗 Road Helpline Request Form</h1>
+<p>Get quick roadside assistance anytime, anywhere.</p>
+
+<form name="helplineForm" onsubmit="return validateForm()">
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="Full Name">
+
+    <label>Email</label>
+    <input type="text" name="email" placeholder="Email Address">
+
+    <label>Phone Number</label>
+    <input type="text" name="phone" placeholder="Mobile Number">
+
+    <label>Vehicle Type</label>
+    <select name="vehicle" required>
+        <option value="">Select Vehicle Type</option>
+        <option value="Bicycle">Bicycle</option>
+        <option value="Two-Wheeler">Two-Wheeler</option>
+        <option value="Car">Car</option>
+        <option value="Truck">Truck</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <label>Vehicle Registration No.</label>
+    <input type="text" name="regno" placeholder="e.g., KA05AB1234">
+
+    <label>Required Service</label>
+    <select name="service" required>
+        <option value="">Select Service</option>
+        <option value="Puncture Repair">Puncture Repair</option>
+        <option value="Fuel Delivery">Fuel Delivery</option>
+        <option value="Towing Service">Towing Service</option>
+        <option value="Minor Repair">Minor Repair</option>
+        <option value="Emergency Ambulance">Emergency Ambulance</option>
+    </select>
+
+    <label>Current Location</label>
+    <input type="text" name="location" placeholder="Enter your current location or landmark">
+
+    <label>City</label>
+    <input type="text" name="city" placeholder="City">
+
+    <label>Pincode</label>
+    <input type="text" name="pincode" placeholder="6-digit pincode">
+
+    <label>Date of Request</label>
+    <input type="date" name="date">
+
+    <label>Preferred Mechanic Arrival Time</label>
+    <input type="time" name="time">
+
+    <label>Issue Description</label>
+    <textarea name="issue" placeholder="Describe the issue briefly"></textarea>
+
+    <label>Payment Mode</label>
+    <select name="payment" required>
+        <option value="">Select Payment Type</option>
+        <option value="Cash">Cash</option>
+        <option value="UPI">UPI</option>
+        <option value="Card">Card</option>
+    </select>
+
+    <label>Upload Photo (optional)</label>
+    <input type="file" name="photo" accept="image/*">
+
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Create Password">
+
+    <label>Confirm Password</label>
+    <input type="password" name="cpassword" placeholder="Confirm Password">
+
+    <label class="checkbox-label">
+        <input type="checkbox" name="terms" required> I agree to the terms and conditions
+    </label>
+
+    <input type="submit" value="Submit Request">
+</form>
+
+<script>
+function validateForm() {
+    var form = document.forms["helplineForm"];
+    var name = form["name"].value.trim();
+    var email = form["email"].value.trim();
+    var phone = form["phone"].value.trim();
+    var regno = form["regno"].value.trim();
+    var location = form["location"].value.trim();
+    var city = form["city"].value.trim();
+    var pincode = form["pincode"].value.trim();
+    var password = form["password"].value;
+    var cpassword = form["cpassword"].value;
+    var issue = form["issue"].value.trim();
+
+    if(name == "") { alert("Name is required"); return false; }
+    var emailPattern = /^\S+@\S+\.\S+$/;
+    if(!emailPattern.test(email)) { alert("Enter a valid email"); return false; }
+    var phonePattern = /^[0-9]{10}$/;
+    if(!phonePattern.test(phone)) { alert("Enter a valid 10-digit phone number"); return false; }
+    if(regno == "") { alert("Enter vehicle registration number"); return false; }
+    if(location == "") { alert("Enter current location"); return false; }
+    if(city == "") { alert("Enter your city"); return false; }
+    var pincodePattern = /^[0-9]{6}$/;
+    if(!pincodePattern.test(pincode)) { alert("Enter a valid 6-digit pincode"); return false; }
+    if(issue == "") { alert("Describe your issue briefly"); return false; }
+    if(password.length < 6) { alert("Password must be at least 6 characters long"); return false; }
+    if(password != cpassword) { alert("Passwords do not match"); return false; }
+
+    alert("Helpline request submitted successfully!");
+    return true;
+}
+</script>
+
+</body>
+</html>
